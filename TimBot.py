@@ -3,8 +3,10 @@ import asyncio
 import random
 import sys
 
+email = 'timbot99@mail.com'
+password = input('Enter the password for ' + email + ': ')
 client = discord.Client()
-client.login('timbot99@mail.com', '*******')
+client.login(email, password)
 
 commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug'];
 botPrefix = '$';
