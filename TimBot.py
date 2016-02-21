@@ -8,7 +8,7 @@ password = input('Enter the password for ' + email + ': ')
 client = discord.Client()
 client.login(email, password)
 
-commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy'];
+commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy','kidder'];
 botPrefix = '$';
 
 if len(botPrefix) != 1:
@@ -145,7 +145,9 @@ def on_message(message):
         response = "WHY DOESN'T " + str(message.content[len(botPrefix)+4:]).upper() + " RESONATE WITH JOY!?!?" 
         client.send_message(message.channel,response)
         
-
+    if message.content.startswith(botPrefix + 'kidder'):
+        response = "You were always sucha kidder, " + str(message.content[len(botPrefix)+7:]) 
+        client.send_message(message.channel,response)
         
 @client.event
 def on_member_join(member):
