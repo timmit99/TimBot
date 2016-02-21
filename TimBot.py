@@ -2,13 +2,17 @@ import discord
 import asyncio
 import random
 import sys
+from urllib.request import urlopen
+from urllib.error import URLError
+import json
+
 
 email = 'timbot99@mail.com'
 password = input('Enter the password for ' + email + ': ')
 client = discord.Client()
 client.login(email, password)
 
-commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy','kidder'];
+commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy','kidder','islive'];
 botPrefix = '$';
 
 if len(botPrefix) != 1:
@@ -127,6 +131,29 @@ def on_message(message):
         else:
             client.send_message(message.channel,'Invalid number entered')
             return
+    if message.content.startswith(botPrefix + 'islive'):
+        userInput = message.content.split()
+        names = userInput[1:]
+        index = 0
+        for name in names:
+            url = 'https://api.twitch.tv/kraken/streams/' + name
+            try:
+                info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
+                if info['stream'] == None:
+                    response = 'No, ' + str(names[index]) + ' is offline.'
+                    client.send_message(message.channel, response)
+                else:
+                    response = 'Yes, ' + str(names[index]) + ' is online with ' + str(info['stream']['viewers']) + ' viewers.'
+                    client.send_message(message.channel, response)
+            except URLError as e:
+                if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
+                    response = 'I\'m sorry, ' + str(names[index]) + ' could not be found.'
+                    client.send_message(message.channel, response)
+                else:
+                    response = 'There was an error with your request'
+                    client.send_message(message.channel, response)
+            index += 1
+                    
 
 
     if message.content.startswith(botPrefix + 'throw'):
