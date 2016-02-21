@@ -8,7 +8,7 @@ password = input('Enter the password for ' + email + ': ')
 client = discord.Client()
 client.login(email, password)
 
-commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug'];
+commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy'];
 botPrefix = '$';
 
 if len(botPrefix) != 1:
@@ -136,6 +136,16 @@ def on_message(message):
     if message.content.startswith(botPrefix + 'hug'):
         response = '(>ಠ_ಠ)>  ' + str(message.content[len(botPrefix)+4:])
         client.send_message(message.channel,response)
+
+    if message.content.startswith(botPrefix + 'feat'):
+        response = "That's a feat, " + str(message.content[len(botPrefix)+5:]) + ", and I don't mean an arm." 
+        client.send_message(message.channel,response)
+
+    if message.content.startswith(botPrefix + 'joy'):
+        response = "WHY DOESN'T " + str(message.content[len(botPrefix)+4:]).upper() + " RESONATE WITH JOY!?!?" 
+        client.send_message(message.channel,response)
+        
+
         
 @client.event
 def on_member_join(member):
