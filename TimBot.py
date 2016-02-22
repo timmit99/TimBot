@@ -12,9 +12,9 @@ password = input('Enter the password for ' + email + ': ')
 client = discord.Client()
 client.login(email, password)
 
-commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy','kidder','islive'];
+commands = ['commands','id','8ball','lenny','hayden','hello','fish','driveby','dice','countdown','throw','hug','feat','joy','kidder','islive','twitch'];
 botPrefix = '$';
-Moderators = ['TIMMit99','HaydenA7x']
+Moderators = ['Timmit99']
 mods = [x.lower() for x in Moderators]     # making all the names lowercase to make it easier to compare
 
 
@@ -215,4 +215,19 @@ def on_message(message):
             else:
                 response = 'Hello ' + str(message.author)
             client.send_message(message.channel,response)
+
+        if message.content.startswith(botPrefix + 'twitch'):
+            names = message.content.split()[1:]
+            if len(names) == 0:
+                response = 'Enter one or more names after ' + botPrefix + 'twitch in order to get the link(s)'
+            elif len(names) == 1:
+                response = 'http://twitch.tv/' + names[0]
+            else:
+                response = 'http://www.multitwitch.tv'
+                for name in names:
+                    response += '/' + name
+            client.send_message(message.channel,response)
+            
+                
+            
 client.run()

@@ -1,3 +1,7 @@
 Add $twitch PARAM1 PARAM2
 	When triggered, create twitch.tv/PARAM1 if only 1 paramater
 	if multiple create multitwitch.tv/PARAM1 /PARAM2... 
+
+DONE
+
+
