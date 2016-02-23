@@ -4,6 +4,10 @@ running = True;
 botPrefix = "$";
 varOptions = ["view","add","subtract","set","create","delete"]
 
+print("The syntax for this command is:")
+print("$var [" + '|'.join(varOptions) + "] [_NAME_] (optional_value)")
+print("The VARIABLES.json file is able to be opened in any text editor.")
+print("It contains 'count' to start with.")
 
 while running:
 
