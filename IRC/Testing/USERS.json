@@ -1,0 +1,42 @@
+{
+	"users": {
+		"fitmit_12": {
+			"level": 0,
+			"blacklist": false
+		},
+		"ereiter": {
+			"level": 0,
+			"blacklist": false
+		},
+		"haydena7x": {
+			"level": 0,
+			"blacklist": false
+		},
+		"timbot99": {
+			"level": 0,
+			"blacklist": false
+		},
+		"probablynotcereal": {
+			"level": 0,
+			"blacklist": false
+		},
+		"timmit99": {
+			"level": 3,
+			"blacklist": false
+		},
+		"coestar": {
+			"level": 2,
+			"blacklist": true
+		},
+		"emerlyn": {
+			"level": 0,
+			"blacklist": false
+		}
+	},
+	"levels": {
+		"2": "local moderator",
+		"1": "regular",
+		"3": "global moderator",
+		"0": "normal user"
+	}
+}
